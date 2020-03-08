@@ -1,0 +1,8 @@
+@import '~@angular/material/theming';
+
+.dark {
+  color: $light-primary-text;
+}
+.light {
+  color: $dark-primary-text;
+}

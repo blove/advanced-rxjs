@@ -1,0 +1,120 @@
+@import '~@angular/material/theming';
+@import '../../../styles/variables';
+
+mat-toolbar {
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+
+  a.primary {
+    color: mat-color($mat-deep-orange, 500);
+    text-decoration: none;
+    display: flex;
+    margin: 0 20px;
+
+    .logo {
+      height: 20px;
+    }
+  }
+
+  .spacer {
+    flex: auto;
+  }
+}
+
+.shell {
+  min-height: 100%;
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  box-sizing: border-box;
+  padding-top: 64px;
+  overflow-y: auto;
+
+  .content {
+    width: 100%;
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 20px 0;
+    flex: 1 1 auto;
+  }
+
+  footer {
+    padding: 12px;
+    font-size: 12px;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid mat-color($mat-gray, 400);
+
+    a:hover {
+      text-decoration: underline;
+      text-decoration-color: mat-color($mat-deep-orange, 500);
+    }
+
+    .made-by,
+    .spacer,
+    .copyright {
+      display: flex;
+    }
+
+    .made-by {
+      display: none;
+    }
+
+    .spacer {
+      flex: 1;
+    }
+
+    .copyright {
+      flex-direction: column;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  @media screen and ($gt-xsmall) and ($lt-medium) {
+    footer {
+      .made-by {
+        display: flex;
+      }
+
+      .copyright {
+        width: inherit;
+        text-align: left;
+      }
+    }
+  }
+
+  @media screen and (min-width: 960px) {
+    footer {
+      .made-by {
+        display: flex;
+      }
+
+      .copyright {
+        width: inherit;
+        text-align: left;
+      }
+    }
+  }
+}
+
+::ng-deep .dark {
+  .shell {
+    footer {
+      color: rgba(255, 255, 255, 0.75) !important;
+
+      a {
+        color: rgba(255, 255, 255, 0.75) !important;
+      }
+    }
+  }
+}

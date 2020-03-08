@@ -1,0 +1,33 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+$lookout-primary: mat-palette($mat-purple, 500, 200, 500);
+$lookout-accent: mat-palette($mat-deep-orange, 500, 100, 400);
+$lookout-warn: mat-palette($mat-red);
+$lookout-theme: mat-light-theme($lookout-primary, $lookout-accent, $lookout-warn);
+@include angular-material-theme($lookout-theme);
+
+.mat-button {
+  border: 1px solid rgba(0, 0, 0, 0.7) !important;
+}
+
+.light {
+  background: #f9f9fa;
+}
+
+.dark {
+  background: #000;
+  $lookout-dark-primary: mat-palette($mat-gray, 900, 100, 400);
+  $lookout-dark-accent: mat-palette($mat-deep-orange, 500, 100, 400);
+  $lookout-dark-warn: mat-palette($mat-red);
+  $lookout-dark-theme: mat-dark-theme(
+    $lookout-dark-primary,
+    $lookout-dark-accent,
+    $lookout-dark-warn
+  );
+  @include angular-material-theme($lookout-dark-theme);
+
+  .mat-button {
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  }
+}

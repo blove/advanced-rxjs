@@ -1,11 +1,31 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { RouteService } from '@app-core/services/route.service';
+import { IndexComponent } from '@app-features/home';
 
-
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/home',
+  },
+  {
+    path: 'users',
+    loadChildren: () =>
+      import('./features/customers/customers.module').then(
+        ({ CustomersModule }) => CustomersModule
+      ),
+  },
+  RouteService.withShell([
+    {
+      path: 'home',
+      component: IndexComponent,
+    },
+  ]),
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

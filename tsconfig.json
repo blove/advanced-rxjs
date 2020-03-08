@@ -11,10 +11,12 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",
-    "lib": [
-      "es2018",
-      "dom"
-    ]
+    "lib": ["es2018", "dom"],
+    "paths": {
+      "@app-core/*": ["src/app/core/*"],
+      "@app-features/*": ["src/app/features/*"],
+      "@app-state/*": ["src/app/state/*"]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

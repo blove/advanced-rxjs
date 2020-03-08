@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button (click)="onToggleMenu()" data-qa="mat-toolbar-menu-btn">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <a href="" class="primary" routerLink="/">
+    Advanced RxJS
+  </a>
+
+  <span class="spacer"></span>
+
+  <a mat-icon-button [matMenuTriggerFor]="optionsMenu"><mat-icon>settings</mat-icon></a>
+  <mat-menu #optionsMenu="matMenu">
+    <ng-container [ngSwitch]="mode | async">
+      <button *ngSwitchCase="Mode.Dark" mat-menu-item (click)="onLightMode()">Light Mode</button>
+      <button *ngSwitchCase="Mode.Light" mat-menu-item (click)="onDarkMode()">Dark Mode</button>
+    </ng-container>
+  </mat-menu>
+</mat-toolbar>
+<div class="shell">
+  <div class="content"><router-outlet></router-outlet></div>
+  <footer>
+    <div class="made-by"><a href="https://brianflove.com">Made with 🤗 by Brian Love</a></div>
+    <div class="spacer"></div>
+    <div class="copyright">
+      <span>Site © <a href="https://liveloveapp.com">LiveLoveApp</a></span>
+    </div>
+  </footer>
+</div>
