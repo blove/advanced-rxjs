@@ -1,4 +1,5 @@
 import { Mode } from '@app-core/enums';
+import { log } from '@app-core/operators';
 import { Observable, Subject } from 'rxjs';
 import { scan, startWith, tap } from 'rxjs/operators';
 
@@ -29,7 +30,7 @@ const reducer = (state: SettingsState, action: Actions): SettingsState => {
 export const store$: Observable<SettingsState> = action$.pipe(
   startWith(initialState),
   scan(reducer),
-  tap(console.log)
+  log()
 );
 
 // Dispatch actions
