@@ -8,7 +8,9 @@
     "serve:proxy": "ng serve --source-map --proxy-config proxy.conf.json",
     "serve:server": "json-server --watch data/data.json --routes data/routes.json",
     "build": "ng build",
-    "test": "ng test",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -37,19 +39,46 @@
     "@angular/language-service": "~9.0.5",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
+    "@types/jest": "^25.1.4",
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
     "faker": "^4.1.0",
+    "husky": "^4.2.3",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~4.2.1",
+    "jest": "^25.1.0",
+    "jest-preset-angular": "^8.0.0",
     "karma": "~4.3.0",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~2.1.0",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.2",
+    "prettier": "^1.19.1",
     "protractor": "~5.4.3",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "~3.7.5"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupJest.ts"
+    ],
+    "moduleNameMapper": {
+      "^@app-core/(.*)$": "<rootDir>/src/app/core/$1",
+      "^@app-features/(.*)$": "<rootDir>/src/app/features/$1",
+      "^@app-state/(.*)$": "<rootDir>/src/app/state/$1"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,md,ts,html,component.html}": [
+      "prettier --config ./prettier.config.js --write",
+      "git add"
+    ]
   }
 }
